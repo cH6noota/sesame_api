@@ -58,7 +58,7 @@ def create_otp(token):
     return totp.now()   #この地点での　情報
 
 def token_check(otp,code):
-  tm=datetime.now()#+timedelta(hours=9)
+  tm=datetime.now()+timedelta(hours=9)
   tm = tm - timedelta(minutes=tm.minute % 30,
                              seconds=tm.second,
                              microseconds=tm.microsecond)
