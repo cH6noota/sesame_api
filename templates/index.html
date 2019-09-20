@@ -1,0 +1,50 @@
+<!--DOCTYPE宣言と呼ばれるもので、テキストファイルはHTMLだとブラウザに説明するための宣言-->
+<!DOCTYPE html>
+<!--日本語を扱うので"ja" 英語なら"en""-->
+<html lang="ja">
+<head>
+    <!--このHTMLの文字コードはUTF-8だとブラウザに説明するための宣言-->
+    <meta charset="UTF-8">
+    <!--ウェブページを表示する際に、きちんと正しく表示させるためのおまじない。詳しく説明すると難しく長くなるので、入れないといけないものなのだと覚えておいてください。-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--上に同じ-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--ブラウザの上に現れるタイトル-->
+    <title>POST テスト</title>
+    <!--CSSの読み込みをする部分。href=""にCSSファイルの置いている場所とファイル名を渡します-->
+    <link rel="stylesheet" href="./static/stylesheet.css">
+</head>
+<!--以上でhead要素は終わり。ほとんどは定型文なので覚える必要はない、どのようなことをしているのかは覚えてこと。--> 
+<body>
+    <header>
+        <!--各要素をCSSで扱いやすいようにclass="xxx"としてラベリングしている
+        画像を入れたいときはimg要素を使う。srcに画像のURLを指定。altには画像の説明を書く。ブラウザはimg要素を見つけると、画像を表示できる場合はsrcで示されたURLの中身を、表示できないときはaltの代替文をそこに表示する。-->   
+        <img class="header_img" src="https://aidemy.net/static/media/logo-white.66c48400.svg" alt="Aidemy">
+        <!--テキストにリンクをつけたいときはaタグでテキストを囲う。href=""にリンク先のURLを指定。#を指定した場合はトップページに移動する。-->
+        <a class="header-logo" href="#">POST テスト</a>
+    </header>
+    <!--各要素をCSSで扱いやすいようにclass="xxx"としてラベリングしている-->
+    <div class="main">
+        <!--見出しの要素。h1>h2>h3>h4>h5>h6の順で重要度が高くなる。-->    
+        <!--基本的には文章を入力する際に使う。パラグラフのpであり、１つの段落を意味する。改行には<br>を使う-->
+        <p>入力してください</p>
+        <!--入力フォームを作成するときにはform要素を使います。
+        ここでmethod="POST"と指定しているが、これはPOSTリクエストで画像をアップロードするということを指す。すなわち、Flaskで扱っている
+        request.methodに"POST"が渡され、if文がTrueになるためFlask側で処理が進められる。また、ファイルを送信するフォームでは
+        enctype="multipart/form-data"と指定する。-->
+        <form method="POST" enctype="multipart/form-data">
+        <input type="date" name="example1" value="2019-08-29">
+        <input type="time" name="example2" value="20:40">    
+        <input class="btn" value="submit!" type="submit">
+        </form>
+        <div class="answer">{{answer}}</div>
+    </div>
+
+    <footer>
+        <!--これも予め用意されているfooter要素を使う。img要素を使って画像を入ている。-->
+        <img class="footer_img" src="https://aidemy.net/static/media/logo.eb4d1a66.svg" alt="Aidemy">
+        <!--small要素には著作権表示や法的表記のような、注釈や小さく表示される文を入れる。また、&copy;は©と表示される。-->
+        <small>&copy; 2019 malcolmy, inc.</small>   
+    </footer>
+</body>
+</html>
