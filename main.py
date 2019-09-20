@@ -30,14 +30,18 @@ def token_check(otp,code):
   cur.execute(sql)
   data = cur.fetchall()
   if len(data)==0:
-    return "-2" #予約データなし
+    return "予約データなし"
+ 
   ans_otp=create_otp(data[0]["token"])
-  db.close()
+  
   if ans_otp!=otp:
-    return "-1" #不正な値です
+    return "不正な値です"
   else :
-    return "0"    #認証ok
-
+    sql="update "+code+" set  act='1'  where  date='"+now+"';"
+    cur.execute(sql)
+    db.commit()
+    return "認証"
+  db.close()
 
 
 @app.route('/token_checker', methods=['GET', 'POST'])
