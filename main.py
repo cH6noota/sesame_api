@@ -2,9 +2,15 @@ import os
 import pymysql
 from datetime import datetime,timedelta
 import hashlib
-
+import base64
+import pyotp
 from flask import Flask, request, redirect, url_for, render_template, flash
 app = Flask(__name__)
+def create_otp(token):
+    data = base64.b32encode( token.encode("UTF-8") )
+    totp = pyotp.TOTP(data)
+    return totp.now()   #この地点での　情報
+
 def token_check(otp,code):
   tm=datetime.now()+timedelta(hours=9)
   tm = tm - timedelta(minutes=tm.minute % 30,
