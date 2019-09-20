@@ -72,7 +72,7 @@ def token_check(otp,code):
       cursorclass=pymysql.cursors.DictCursor
   )
   cur = db.cursor()
-  sql = "select token from  "+code+" where  date='"+now+"';"
+  sql = "select token from  "+code+" where  s_date='"+now+"';"
   cur.execute(sql)
   data = cur.fetchall()
   if len(data)==0:
@@ -83,7 +83,7 @@ def token_check(otp,code):
   if ans_otp!=otp:
     return "不正な値です"
   else :
-    sql="update "+code+" set  act='1'  where  date='"+now+"';"
+    sql="update "+code+" set  act='1'  where  s_date='"+now+"';"
     cur.execute(sql)
     db.commit()
     sesame_id=sesame_getter(code)
