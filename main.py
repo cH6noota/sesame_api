@@ -6,7 +6,7 @@ import hashlib
 from flask import Flask, request, redirect, url_for, render_template, flash
 app = Flask(__name__)
 def token_check(otp,code):
-  tm=datetime.now()
+  tm=datetime.now()+timedelta(hours=9)
   tm = tm - timedelta(minutes=tm.minute % 30,
                              seconds=tm.second,
                              microseconds=tm.microsecond)
@@ -43,7 +43,7 @@ def token_checker():
                 
                 return token_check(otp,code) 
 
-        return datetime.now().strftime("%Y/%m/%d %H:%M:%S") 
+        return (datetime.now()+timedelta(hours=9)).strftime("%Y/%m/%d %H:%M:%S") 
 
 
 if __name__ == "__main__":
