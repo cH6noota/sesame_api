@@ -32,7 +32,7 @@ six==1.11.0
 tensorboard==1.6.0
 tensorflow==1.6.0
 termcolor==1.1.0
-urllib3==1.21.1
+urllib3==1.26.5
 Werkzeug==0.14.1
 pyotp==2.3.0
 PyMySQL==0.9.3
